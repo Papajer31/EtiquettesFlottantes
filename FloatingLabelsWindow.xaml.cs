@@ -74,8 +74,6 @@ namespace Étiquettes_Flottantes
             border.MouseMove += Label_MouseMove;
             border.MouseLeftButtonUp += Label_MouseLeftButtonUp;
 
-            // Empêche le drag de la fenêtre quand on clique sur une étiquette
-            border.PreviewMouseLeftButtonDown += (_, e) => e.Handled = true;
 
             return border;
         }

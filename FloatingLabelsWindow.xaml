@@ -1,26 +1,27 @@
 <Window x:Class="Étiquettes_Flottantes.FloatingLabelsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
-        mc:Ignorable="d"
         Title="Étiquettes"
-        Width="800" Height="600"
+        Background="White"
         WindowStyle="None"
         ResizeMode="CanResize"
-        Background="White"
-        SnapsToDevicePixels="True">
+        AllowsTransparency="False"
+        WindowStartupLocation="CenterScreen">
 
+    <!-- Pour permettre le resize avec une fenêtre borderless -->
     <WindowChrome.WindowChrome>
-        <!-- CaptionHeight=0 : pas de barre de titre, mais on garde le resize aux bords -->
-        <shell:WindowChrome CaptionHeight="0" ResizeBorderThickness="6" CornerRadius="0" GlassFrameThickness="0" UseAeroCaptionButtons="False" />
+        <WindowChrome CaptionHeight="0"
+                      ResizeBorderThickness="6"
+                      GlassFrameThickness="0"
+                      UseAeroCaptionButtons="False"/>
     </WindowChrome.WindowChrome>
 
     <Grid x:Name="Root"
           Background="White"
           MouseLeftButtonDown="Root_MouseLeftButtonDown"
           PreviewMouseRightButtonDown="Root_PreviewMouseRightButtonDown">
-        <Canvas x:Name="CanvasArea" Background="White"/>
+
+        <!-- IMPORTANT : Background Transparent pour que le Canvas reçoive les clics dans les zones vides -->
+        <Canvas x:Name="CanvasArea" Background="Transparent"/>
     </Grid>
 </Window>

@@ -1,4 +1,4 @@
-<Window x:Class="Étiquettes_Flottantes.FloatingLabelsWindow"
+﻿<Window x:Class="Étiquettes_Flottantes.FloatingLabelsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Étiquettes"
@@ -6,7 +6,8 @@
         WindowStyle="None"
         ResizeMode="CanResize"
         AllowsTransparency="False"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        FontFamily="{StaticResource AndikaFont}">
 
     <!-- Pour permettre le resize avec une fenêtre borderless -->
     <WindowChrome.WindowChrome>
@@ -19,8 +20,12 @@
     <Grid x:Name="Root"
           Background="White"
           MouseLeftButtonDown="Root_MouseLeftButtonDown"
+          PreviewMouseDown="Root_PreviewMouseDown"
           PreviewMouseRightButtonDown="Root_PreviewMouseRightButtonDown">
 
+        <!-- Image de fond : DOIT se déformer pour remplir la fenêtre (Stretch=Fill) -->
+        <Image x:Name="BackgroundImage" Stretch="Fill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        
         <!-- IMPORTANT : Background Transparent pour que le Canvas reçoive les clics dans les zones vides -->
         <Canvas x:Name="CanvasArea" Background="Transparent"/>
     </Grid>
